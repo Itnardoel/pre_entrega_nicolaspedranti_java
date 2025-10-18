@@ -5,10 +5,8 @@ public class ProductRepository implements CrudRepository<Product> {
   private final List<Product> products = new ArrayList<>();
 
   @Override
-  public void create() {
-    String name = ConsoleInput.readString("Nombre: ");
-    double price = ConsoleInput.readInt("Precio: ");
-    products.add(new Product(name, price));
+  public void create(Product p) {
+    products.add(p);
   };
 
   @Override

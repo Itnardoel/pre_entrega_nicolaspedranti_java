@@ -1,6 +1,6 @@
 
 public interface CrudRepository<T> {
-  void create();
+  void create(T entity);
 
   void getAll();
 
