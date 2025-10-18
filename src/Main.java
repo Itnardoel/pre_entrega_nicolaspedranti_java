@@ -27,17 +27,19 @@ public class Main {
       System.out.println("\n--- CRUD Productos ---");
       System.out.println("1) Crear");
       System.out.println("2) Listar");
-      System.out.println("3) Actualizar");
-      System.out.println("4) Eliminar");
+      System.out.println("3) Buscar por nombre");
+      System.out.println("4) Actualizar");
+      System.out.println("5) Eliminar");
       System.out.println("0) Volver");
 
       option = ConsoleInput.readInt("Opción: ");
 
       switch (option) {
         case 1 -> service.createProduct();
-        // case 2 -> service.listarProductos();
-        // case 3 -> service.actualizarProducto();
-        // case 4 -> service.eliminarProducto();
+        case 2 -> service.getAllProducts();
+        case 3 -> service.getByName();
+        case 4 -> service.updateProduct();
+        case 5 -> service.deleteProduct();
         case 0 -> System.out.println("Volviendo al menú principal...");
         default -> System.out.println("Opción inválida");
       }
