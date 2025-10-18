@@ -10,7 +10,7 @@ public class ConsoleInput {
   public static final int readInt(String message) {
     while (true) {
       try {
-        System.out.println(message + ": ");
+        System.out.println(message);
         String input = scanner.nextLine();
         return Integer.parseInt(input);
       } catch (NumberFormatException e) {
@@ -22,7 +22,7 @@ public class ConsoleInput {
   public static final double readDouble(String message) {
     while (true) {
       try {
-        System.out.println(message + ": ");
+        System.out.println(message);
         String input = scanner.nextLine();
         return Double.parseDouble(input);
       } catch (NumberFormatException e) {
@@ -33,7 +33,7 @@ public class ConsoleInput {
 
   public static final String readString(String message) {
     while (true) {
-      System.out.println(message + ": ");
+      System.out.println(message);
       String input = scanner.nextLine().trim();
 
       if (input.isEmpty()) {
