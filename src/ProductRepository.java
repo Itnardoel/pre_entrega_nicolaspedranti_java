@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ProductRepository implements CrudRepository<Product> {
   private final List<Product> products = new ArrayList<>();
@@ -10,22 +11,40 @@ public class ProductRepository implements CrudRepository<Product> {
   };
 
   @Override
-  public void getAll() {
-    System.out.println("Not implemented.");
+  public List<Product> getAll() {
+    return products.stream().filter(p -> !p.isDeleted()).toList();
   };
 
   @Override
-  public void findByName() {
-    System.out.println("Not implemented.");
+  public Optional<Product> findById(int id) {
+    return products.stream().filter(p -> p.getId() == id && !p.isDeleted()).findFirst();
   };
 
   @Override
-  public void update() {
-    System.out.println("Not implemented.");
+  public List<Product> findByName(String name) {
+    return products.stream().filter(p -> p.getName().equals(name) && !p.isDeleted()).toList();
   };
 
   @Override
-  public void delete() {
-    System.out.println("Not implemented.");
+  public void update(int id) {
+    // No es necesario actualizar en memoria, el objeto ya fue modificado por referencia.
+    // Método preparado para futuras implementaciones con base de datos u otro almacenamiento
+    // persistente.
+
+    // findById(id).ifPresent(existing -> {
+    // existing.setName(p.getName());
+    // existing.setPrice(p.getPrice());
+    // });
+  };
+
+  @Override
+  public void delete(int id) {
+    // No es necesario actualizar en memoria, el objeto ya fue modificado por referencia.
+    // Método preparado para futuras implementaciones con base de datos u otro almacenamiento
+    // persistente.
+
+    // findById(id).ifPresent(existing -> {
+    // existing.setDeleted(true);
+    // });
   };
 }

@@ -1,13 +1,16 @@
+import java.util.List;
+import java.util.Optional;
 
 public interface CrudRepository<T> {
   void create(T entity);
 
-  void getAll();
+  List<T> getAll();
 
-  void findByName();
+  Optional<T> findById(int id);
 
-  void update();
+  List<T> findByName(String name);
 
-  void delete();
+  void update(int id);
 
+  void delete(int id);
 }
