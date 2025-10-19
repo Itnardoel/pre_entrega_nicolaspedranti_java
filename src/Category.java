@@ -26,7 +26,7 @@ public class Category {
     return isDeleted;
   }
 
-  public void setDeleted(boolean deleted) {
+  public void setIsDeleted(boolean deleted) {
     this.isDeleted = deleted;
   }
 

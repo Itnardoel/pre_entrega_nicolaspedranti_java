@@ -122,7 +122,7 @@ public class ItemService {
     int idToFind = ConsoleInput.readInt("Id del item a eliminar:");
 
     itemRepo.findById(idToFind).ifPresentOrElse(item -> {
-      item.setDeleted(true);
+      item.setIsDeleted(true);
 
       System.out.println("Item eliminado: " + item);
     }, () -> {

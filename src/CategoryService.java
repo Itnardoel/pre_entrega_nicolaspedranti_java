@@ -79,7 +79,7 @@ public class CategoryService {
         return;
       }
 
-      category.setDeleted(true);
+      category.setIsDeleted(true);
 
       System.out.println("Categoría eliminada: " + category);
     }, () -> {
