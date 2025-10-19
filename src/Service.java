@@ -16,7 +16,6 @@ public class Service extends Item {
 
   @Override
   public String toString() {
-    return "ID: " + getId() + " | Nombre: " + getName() + " | Precio: " + getPrice()
-        + " | Duración en horas: " + durationInHours;
+    return super.toString() + " | Duración en horas: " + durationInHours;
   }
 }
