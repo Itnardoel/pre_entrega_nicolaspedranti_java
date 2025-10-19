@@ -11,7 +11,7 @@ public class ConsoleInput {
     while (true) {
       try {
         System.out.println(message);
-        String input = scanner.nextLine();
+        String input = scanner.nextLine().trim();
         return Integer.parseInt(input);
       } catch (NumberFormatException e) {
         System.out.println("❌ Error: Ingresa un número entero válido.");
@@ -23,7 +23,7 @@ public class ConsoleInput {
     while (true) {
       try {
         System.out.println(message);
-        String input = scanner.nextLine();
+        String input = scanner.nextLine().trim();
         return Double.parseDouble(input);
       } catch (NumberFormatException e) {
         System.out.println("❌ Error: Ingresa un número decimal válido.");
