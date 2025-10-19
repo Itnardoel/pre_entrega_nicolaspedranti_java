@@ -32,7 +32,7 @@ public abstract class Item {
     this.price = price;
   }
 
-  public boolean isDeleted() {
+  public boolean getIsDeleted() {
     return isDeleted;
   }
 

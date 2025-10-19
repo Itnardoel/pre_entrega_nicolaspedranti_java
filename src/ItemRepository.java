@@ -12,18 +12,18 @@ public class ItemRepository implements CrudRepository<Item> {
 
   @Override
   public List<Item> getAll() {
-    return items.stream().filter(i -> !i.isDeleted()).toList();
+    return items.stream().filter(i -> !i.getIsDeleted()).toList();
   };
 
   @Override
   public Optional<Item> findById(int id) {
-    return items.stream().filter(i -> i.getId() == id && !i.isDeleted()).findFirst();
+    return items.stream().filter(i -> i.getId() == id && !i.getIsDeleted()).findFirst();
   };
 
   @Override
   public List<Item> findByName(String name) {
     return items.stream()
-        .filter(i -> i.getName().toLowerCase().equals(name.toLowerCase()) && !i.isDeleted())
+        .filter(i -> i.getName().toLowerCase().equals(name.toLowerCase()) && !i.getIsDeleted())
         .toList();
   };
 

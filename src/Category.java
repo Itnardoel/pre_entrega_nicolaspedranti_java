@@ -22,7 +22,7 @@ public class Category {
     this.name = name;
   }
 
-  public boolean isDeleted() {
+  public boolean getIsDeleted() {
     return isDeleted;
   }
 

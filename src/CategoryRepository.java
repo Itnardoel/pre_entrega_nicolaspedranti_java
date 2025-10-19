@@ -12,18 +12,18 @@ public class CategoryRepository implements CrudRepository<Category> {
 
   @Override
   public List<Category> getAll() {
-    return categories.stream().filter(c -> !c.isDeleted()).toList();
+    return categories.stream().filter(c -> !c.getIsDeleted()).toList();
   };
 
   @Override
   public Optional<Category> findById(int id) {
-    return categories.stream().filter(c -> c.getId() == id && !c.isDeleted()).findFirst();
+    return categories.stream().filter(c -> c.getId() == id && !c.getIsDeleted()).findFirst();
   };
 
   @Override
   public List<Category> findByName(String name) {
     return categories.stream()
-        .filter(c -> c.getName().toLowerCase().equals(name.toLowerCase()) && !c.isDeleted())
+        .filter(c -> c.getName().toLowerCase().equals(name.toLowerCase()) && !c.getIsDeleted())
         .toList();
   };
 
