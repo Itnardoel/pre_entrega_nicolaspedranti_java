@@ -2,27 +2,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ProductRepository implements CrudRepository<Product> {
-  private final List<Product> products = new ArrayList<>();
+public class ItemRepository implements CrudRepository<Item> {
+  private final List<Item> items = new ArrayList<>();
 
   @Override
-  public void create(Product p) {
-    products.add(p);
+  public void create(Item item) {
+    items.add(item);
   };
 
   @Override
-  public List<Product> getAll() {
-    return products.stream().filter(p -> !p.isDeleted()).toList();
+  public List<Item> getAll() {
+    return items.stream().filter(i -> !i.isDeleted()).toList();
   };
 
   @Override
-  public Optional<Product> findById(int id) {
-    return products.stream().filter(p -> p.getId() == id && !p.isDeleted()).findFirst();
+  public Optional<Item> findById(int id) {
+    return items.stream().filter(i -> i.getId() == id && !i.isDeleted()).findFirst();
   };
 
   @Override
-  public List<Product> findByName(String name) {
-    return products.stream().filter(p -> p.getName().equals(name) && !p.isDeleted()).toList();
+  public List<Item> findByName(String name) {
+    return items.stream().filter(i -> i.getName().equals(name) && !i.isDeleted()).toList();
   };
 
   @Override
@@ -32,8 +32,8 @@ public class ProductRepository implements CrudRepository<Product> {
     // persistente.
 
     // findById(id).ifPresent(existing -> {
-    // existing.setName(p.getName());
-    // existing.setPrice(p.getPrice());
+    // existing.setName(i.getName());
+    // existing.setPrice(i.getPrice());
     // });
   };
 
