@@ -22,7 +22,9 @@ public class ItemRepository implements CrudRepository<Item> {
 
   @Override
   public List<Item> findByName(String name) {
-    return items.stream().filter(i -> i.getName().equals(name) && !i.isDeleted()).toList();
+    return items.stream()
+        .filter(i -> i.getName().toLowerCase().equals(name.toLowerCase()) && !i.isDeleted())
+        .toList();
   };
 
   @Override
