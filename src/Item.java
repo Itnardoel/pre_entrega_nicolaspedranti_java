@@ -39,4 +39,9 @@ public abstract class Item {
   public void setDeleted(boolean deleted) {
     this.isDeleted = deleted;
   }
+
+  @Override
+  public String toString() {
+    return "ID: " + id + " | Nombre: " + name + " | Precio: " + price;
+  }
 }
