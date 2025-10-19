@@ -1,7 +1,7 @@
 public class Main {
 
   public static void main(String[] args) {
-    final ProductService productService = new ProductService(new ProductRepository());
+    final ItemService itemService = new ItemService(new ItemRepository());
 
     int option;
 
@@ -14,14 +14,14 @@ public class Main {
       option = ConsoleInput.readInt("Opción: ");
 
       switch (option) {
-        case 1 -> productMenu(productService);
+        case 1 -> productMenu(itemService);
         case 0 -> System.out.println("¡Hasta luego!");
         default -> System.out.println("Opción inválida");
       }
     } while (option != 0);
   }
 
-  private static void productMenu(ProductService service) {
+  private static void productMenu(ItemService service) {
     int option;
     do {
       System.out.println("\n--- CRUD Productos ---");
@@ -35,11 +35,11 @@ public class Main {
       option = ConsoleInput.readInt("Opción: ");
 
       switch (option) {
-        case 1 -> service.createProduct();
-        case 2 -> service.getAllProducts();
+        case 1 -> service.createItem();
+        case 2 -> service.getAllItems();
         case 3 -> service.getByName();
-        case 4 -> service.updateProduct();
-        case 5 -> service.deleteProduct();
+        case 4 -> service.updateItem();
+        case 5 -> service.deleteItem();
         case 0 -> System.out.println("Volviendo al menú principal...");
         default -> System.out.println("Opción inválida");
       }
