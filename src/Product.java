@@ -1,12 +1,21 @@
 public class Product extends Item {
-  // private Categoria categoria;
+  private Category category;
 
-  public Product(String name, double price) {
+  public Product(String name, double price, Category category) {
     super(name, price);
+    this.category = category;
+  }
+
+  public Category getCategory() {
+    return category;
+  }
+
+  public void setCategory(Category category) {
+    this.category = category;
   }
 
   @Override
   public String toString() {
-    return "ID: " + getId() + " | Nombre: " + getName() + " | Precio: " + getPrice();
+    return super.toString() + " | Categoría: " + category.getName();
   }
 }
