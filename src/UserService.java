@@ -84,7 +84,7 @@ public class UserService {
 
   private boolean isUsersEmpty(List<User> users) {
     if (users.isEmpty()) {
-      System.out.println("No hay usuarios registradas.");
+      System.out.println("No hay usuarios registrados.");
       return true;
     }
 
