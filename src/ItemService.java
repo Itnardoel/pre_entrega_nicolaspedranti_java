@@ -1,10 +1,12 @@
 import java.util.List;
 
 public class ItemService {
-  private ItemRepository itemRepo;
+  private final ItemRepository itemRepo;
+  private final CategoryService categoryService;
 
-  public ItemService(ItemRepository itemRepo) {
+  public ItemService(ItemRepository itemRepo, CategoryService categoryService) {
     this.itemRepo = itemRepo;
+    this.categoryService = categoryService;
   }
 
   public void createItem() {
@@ -16,11 +18,21 @@ public class ItemService {
       String name = ConsoleInput.readString("Nombre: ");
       double price = ConsoleInput.readDouble("Precio: ");
 
-      Product newProduct = new Product(name, price);
-      itemRepo.create(newProduct);
+      List<Category> categories = categoryService.getAllCategories();
 
-      System.out.println("Producto creado.");
-      System.out.println(newProduct);
+      if (categories != null) {
+        int categoryId = ConsoleInput.readInt("Elegí id de categoría: ");
+        try {
+          Category categorySelected = categories.get(categoryId - 1);
+          Product newProduct = new Product(name, price, categorySelected);
+          itemRepo.create(newProduct);
+
+          System.out.println("Producto creado.");
+          System.out.println(newProduct);
+        } catch (Exception e) {
+          System.out.println("Categoría inválida.");
+        }
+      }
     } else if (option == 2) {
       String name = ConsoleInput.readString("Nombre: ");
       double price = ConsoleInput.readDouble("Precio: ");
@@ -72,18 +84,28 @@ public class ItemService {
 
     itemRepo.findById(idToFind).ifPresentOrElse(item -> {
       String newName = ConsoleInput.readString("Nuevo nombre: ");
-      item.setName(newName);
-
       double newPrice = ConsoleInput.readDouble("Nuevo precio: ");
-      item.setPrice(newPrice);
 
       if (item instanceof Product) {
-        // TODO agregar categorias
-        System.out.println("Producto actualizado: " + item);
+        List<Category> categories = categoryService.getAllCategories();
+        int categoryId = ConsoleInput.readInt("Elegí id de categoría: ");
+
+        try {
+          Category categorySelected = categories.get(categoryId - 1);
+          item.setName(newName);
+          item.setPrice(newPrice);
+          ((Product) item).setCategory(categorySelected);
+
+          System.out.println("Producto actualizado: " + item);
+        } catch (Exception e) {
+          System.out.println("Categoría inválida.");
+        }
       }
 
       if (item instanceof Service) {
         int newDuration = ConsoleInput.readInt("Nueva duración (horas): ");
+        item.setName(newName);
+        item.setPrice(newPrice);
         ((Service) item).setDurationInHours(newDuration);
         System.out.println("Servicio actualizado: " + item);
       }
