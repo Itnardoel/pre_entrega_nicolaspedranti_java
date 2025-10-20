@@ -49,19 +49,19 @@ public class ItemService {
     }
   }
 
-  public boolean getAllItems() {
+  public List<Item> getAllItems() {
     List<Item> items = itemRepo.getAll();
 
     if (isItemsEmpty(items))
-      return false;
+      return null;
 
     System.out.println("Lista de items:");
     printItems(items);
-    return true;
+    return items;
   }
 
   public void getByName() {
-    if (!getAllItems())
+    if (getAllItems() == null)
       return;
 
     String nameToFind = ConsoleInput.readString("Nombre del item a buscar:");
@@ -77,7 +77,7 @@ public class ItemService {
   }
 
   public void updateItem() {
-    if (!getAllItems())
+    if (getAllItems() == null)
       return;
 
     int idToFind = ConsoleInput.readInt("Id del item a actualizar:");
@@ -116,7 +116,7 @@ public class ItemService {
   }
 
   public void deleteItem() {
-    if (!getAllItems())
+    if (getAllItems() == null)
       return;
 
     int idToFind = ConsoleInput.readInt("Id del item a eliminar:");
