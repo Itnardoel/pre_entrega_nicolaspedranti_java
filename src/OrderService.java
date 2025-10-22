@@ -73,19 +73,6 @@ public class OrderService {
     return orders;
   }
 
-  private boolean isOrdersEmpty(List<Order> orders) {
-    if (orders.isEmpty()) {
-      System.out.println("No hay pedidos registrados.");
-      return true;
-    }
-
-    return false;
-  }
-
-  private void printItems(List<Order> orders) {
-    orders.forEach(o -> System.out.println(o));
-  }
-
   public void deleteOrder() {
     if (getAllOrders() == null)
       return;
@@ -99,5 +86,18 @@ public class OrderService {
     }, () -> {
       System.out.println("Usuario no encontrado.");
     });
+  }
+
+  private boolean isOrdersEmpty(List<Order> orders) {
+    if (orders.isEmpty()) {
+      System.out.println("No hay pedidos registrados.");
+      return true;
+    }
+
+    return false;
+  }
+
+  private void printItems(List<Order> orders) {
+    orders.forEach(o -> System.out.println(o));
   }
 }

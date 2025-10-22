@@ -115,8 +115,7 @@ public class Main {
       System.out.println("\n--- CRUD Pedidos ---");
       System.out.println("1) Crear");
       System.out.println("2) Listar");
-      // System.out.println("4) Actualizar");
-      System.out.println("5) Eliminar");
+      System.out.println("3) Eliminar");
       System.out.println("0) Volver");
 
       option = ConsoleInput.readInt("Opción: ");
@@ -124,8 +123,7 @@ public class Main {
       switch (option) {
         case 1 -> service.createOrder();
         case 2 -> service.getAllOrders();
-        // case 4 -> service.updateItem();
-        case 5 -> service.deleteOrder();
+        case 3 -> service.deleteOrder();
         case 0 -> System.out.println("Volviendo al menú principal...");
         default -> System.out.println("Opción inválida");
       }
