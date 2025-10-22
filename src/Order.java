@@ -56,8 +56,10 @@ public class Order {
 
   @Override
   public String toString() {
-    return "\nPedido #" + id + "\nUsuario: " + user.getName() + "\nProductos: " + items.size()
-        + "\nActivo: " + (active ? "Sí" : "No") + "\nCreado: " + createdAt
+    return "\nPedido #" + id + "\nUsuario: " + user.getName() + " - " + user.getEmail()
+        + "\nProductos: " + items.size() + "\nTotal: $"
+        + items.stream().mapToDouble(item -> item.getPrice()).sum() + "\nActivo: "
+        + (active ? "Sí" : "No") + "\nCreado: " + createdAt
         + (updatedAt != null ? "\nActualizado: " + updatedAt : "");
   }
 }
